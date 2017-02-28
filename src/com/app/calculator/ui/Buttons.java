@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 public class Buttons {
-public static ArrayList<JButton> buildNumberButtons(JFrame frame) {
+	
+	public static void buildNumberButtons(JFrame frame, JTextField textField) {
 		
 		ArrayList<JButton> arrayList = new ArrayList<JButton>();
 		
@@ -42,18 +44,11 @@ public static ArrayList<JButton> buildNumberButtons(JFrame frame) {
 		arrayList.add(eight);
 		arrayList.add(nine);
 		
-		JButton cancel = new JButton("C");  
-		cancel.setBounds(70, 230, 50, 50);
-		JButton equals = new JButton("=");  
-		equals.setBounds(130, 230, 50, 50);
-		
-		arrayList.add(cancel);
-		arrayList.add(equals);
-		
-		return arrayList;
+		addButtonsToFrame(arrayList, frame);
+		ButtonActionListener.setButtonActionListenter(arrayList, textField);
 	}
 
-	public static ArrayList<JButton> buildOperationButtons(JFrame frame) {
+	public static void buildOperatorButtons(JFrame frame, JTextField textField) {
 		
 		ArrayList<JButton> arrayList = new ArrayList<JButton>();
 		
@@ -65,13 +60,33 @@ public static ArrayList<JButton> buildNumberButtons(JFrame frame) {
 		multiply.setBounds(190, 170, 50, 50);
 		JButton divide = new JButton("/");  
 		divide.setBounds(190, 230, 50, 50);
+		JButton equals = new JButton("=");  
+		equals.setBounds(130, 230, 50, 50);
 		
 		arrayList.add(add);
 		arrayList.add(subtract);
 		arrayList.add(multiply);
 		arrayList.add(divide);
+		arrayList.add(equals);
 		
-		return arrayList;
+		addButtonsToFrame(arrayList, frame);
+	}
+	
+	public static void buildAdditionalButtons(JFrame frame, JTextField textField) {
+		
+		ArrayList<JButton> arrayList = new ArrayList<JButton>();
+		
+		JButton cancel = new JButton("C");  
+		cancel.setBounds(70, 230, 50, 50);
+		arrayList.add(cancel);
+		
+		addButtonsToFrame(arrayList, frame);
+	}
+	
+	public static void addButtonsToFrame(ArrayList<JButton> listOfButtons, JFrame frame) {
+		for (JButton jButton : listOfButtons) {
+			frame.add(jButton);
+		}
 	}
 }
 
