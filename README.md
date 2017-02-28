@@ -12,3 +12,5 @@
  * Expand this simple JSP to a full blown ledger system, utilizing native JDBC. Simple user story below:
   * As a user, I want to be able to *view* my **Account** details so that I could see *transactions* I made on such *days*, *type of transactions* and *total balance*
   
+Mentees:
+Miguel Alvarez
