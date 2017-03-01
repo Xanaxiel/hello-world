@@ -1,5 +1,8 @@
 package com.app.calculator.ui;
 
+import java.util.ArrayList;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -7,11 +10,10 @@ public class Calculator {
 	
 	public Calculator() {
 		JFrame frame = Frame.buildFrame();
-		JTextField textField = Screen.buildTextField(frame);
-		Buttons.buildNumberButtons(frame, textField);
+		JTextField textField = TextField.buildTextField();
+		ArrayList<JButton> listOfButtons = Buttons.buildNumberButtons(frame, textField);
 		Buttons.buildOperatorButtons(frame, textField);
 		Buttons.buildAdditionalButtons(frame, textField);
-		frame.setLayout(null);  
-		frame.setVisible(true);
+		Frame.addToFrame(frame, textField, listOfButtons);
 	}
 }

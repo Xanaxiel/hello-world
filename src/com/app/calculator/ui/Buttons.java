@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 public class Buttons {
 	
-	public static void buildNumberButtons(JFrame frame, JTextField textField) {
+	public static ArrayList<JButton> buildNumberButtons(JFrame frame, JTextField textField) {
 		
 		ArrayList<JButton> arrayList = new ArrayList<JButton>();
 		
@@ -44,11 +44,12 @@ public class Buttons {
 		arrayList.add(eight);
 		arrayList.add(nine);
 		
-		addButtonsToFrame(arrayList, frame);
 		ButtonActionListener.setButtonActionListenter(arrayList, textField);
+		return arrayList;
+		
 	}
 
-	public static void buildOperatorButtons(JFrame frame, JTextField textField) {
+	public static ArrayList<JButton> buildOperatorButtons(JFrame frame, JTextField textField) {
 		
 		ArrayList<JButton> arrayList = new ArrayList<JButton>();
 		
@@ -69,10 +70,10 @@ public class Buttons {
 		arrayList.add(divide);
 		arrayList.add(equals);
 		
-		addButtonsToFrame(arrayList, frame);
+		return arrayList;
 	}
 	
-	public static void buildAdditionalButtons(JFrame frame, JTextField textField) {
+	public static ArrayList<JButton> buildAdditionalButtons(JFrame frame, JTextField textField) {
 		
 		ArrayList<JButton> arrayList = new ArrayList<JButton>();
 		
@@ -80,14 +81,9 @@ public class Buttons {
 		cancel.setBounds(70, 230, 50, 50);
 		arrayList.add(cancel);
 		
-		addButtonsToFrame(arrayList, frame);
+		return arrayList;
 	}
 	
-	public static void addButtonsToFrame(ArrayList<JButton> listOfButtons, JFrame frame) {
-		for (JButton jButton : listOfButtons) {
-			frame.add(jButton);
-		}
-	}
 }
 
 
