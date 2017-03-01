@@ -1,6 +1,6 @@
 package com.app.calculator.ui;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +14,18 @@ public class Frame {
 		return frame;
 	}
 	
-	public static void addToFrame(JFrame frame, JTextField textField, ArrayList<JButton> listOfButtons){
+	public static void addToFrame(JFrame frame, JTextField textField, List<JButton> listOfNumberButtons,
+			List<JButton> listOfOperatorButtons, List<JButton> listOfAdditionalButtons){
 		frame.add(textField);
 		frame.setLayout(null);  
 		frame.setVisible(true);
-		for (JButton jButton : listOfButtons) {
+		for (JButton jButton : listOfNumberButtons) {
+			frame.add(jButton);
+		}
+		for (JButton jButton : listOfOperatorButtons) {
+			frame.add(jButton);
+		}
+		for (JButton jButton : listOfAdditionalButtons) {
 			frame.add(jButton);
 		}
 	}
