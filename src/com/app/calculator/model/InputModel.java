@@ -1,18 +1,38 @@
 package com.app.calculator.model;
 
 public class InputModel {
-
-	private String firstNumber = "";
-	private String secondNumber = "";
-	private String operator = "";
-	private boolean isNewNumber = true;
-	private boolean isSecondNumber;
 	
-	public boolean isSecondNumber() {
-		return isSecondNumber;
+	private String numberA = "";
+	private String bnumberB = "";
+	private String result = "";
+	private String operator = "";
+	private boolean isFirstNumber = true;
+	private boolean isSecondNumber = false;
+	private boolean isOperated = false;
+	
+	public boolean isOperated() {
+		return isOperated;
 	}
-	public void setSecondNumber(boolean isSecondNumber) {
-		this.isSecondNumber = isSecondNumber;
+	public void setIsOperated(boolean isOperated) {
+		this.isOperated = isOperated;
+	}
+	public String getA() {
+		return numberA;
+	}
+	public void setA(String a) {
+		this.numberA = a;
+	}
+	public String getB() {
+		return bnumberB;
+	}
+	public void setB(String b) {
+		this.bnumberB = b;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
 	}
 	public String getOperator() {
 		return operator;
@@ -20,23 +40,16 @@ public class InputModel {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-	public String getFirstNumber() {
-		return firstNumber;
+	public boolean isFirstNumber() {
+		return isFirstNumber;
 	}
-	public void setFirstNumber(String firstNumber) {
-		this.firstNumber = firstNumber;
+	public void setIsFirstNumber(boolean isFirstNumber) {
+		this.isFirstNumber = isFirstNumber;
 	}
-	public String getSecondNumber() {
-		return secondNumber;
+	public boolean isSecondNumber() {
+		return isSecondNumber;
 	}
-	public void setSecondNumber(String secondNumber) {
-		this.secondNumber = secondNumber;
+	public void setIsSecondNumber(boolean isSecondNumber) {
+		this.isSecondNumber = isSecondNumber;
 	}
-	public boolean isNewNumber() {
-		return isNewNumber;
-	}
-	public void setNewNumber(boolean isNewNumber) {
-		this.isNewNumber = isNewNumber;
-	}
-	
 }
