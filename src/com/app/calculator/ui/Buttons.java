@@ -8,10 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.app.calculator.intf.impl.Addition;
-import com.app.calculator.intf.impl.Division;
-import com.app.calculator.intf.impl.Multiplication;
-import com.app.calculator.intf.impl.Subtraction;
+import com.app.calculator.controller.CalculatorController;
 import com.app.calculator.model.InputModel;
 
 public class Buttons {
@@ -51,6 +48,7 @@ public class Buttons {
 		
 		createAndAddButton("C", 70, 230, textField, inputModel);
 		createAndAddButton("=", 130, 230, textField, inputModel);
+		
 
 		return arrayList;
 	}
@@ -58,9 +56,11 @@ public class Buttons {
 	public JButton createAndAddButton(String label, int xPos, int yPos, 
 			JTextField textField, InputModel inputModel){
 		
-		int WIDTH = 50;
+		CalculatorController calculateController = new CalculatorController();
+		
+		int width = 50;
 		JButton button = new JButton(label);
-		button.setBounds(xPos, yPos, WIDTH, WIDTH);
+		button.setBounds(xPos, yPos, width, width);
 		arrayList.add(button);
 			button.addActionListener(new ActionListener() {
 				@Override
@@ -76,7 +76,8 @@ public class Buttons {
 						if(operated){
 							if (button.getText().equalsIgnoreCase("="))
 							{
-								compute(inputModel, textField);
+								
+								calculateController.displayResult(inputModel, textField);
 							}
 							else{
 								inputModel.setOperator((button.getText()));
@@ -85,10 +86,9 @@ public class Buttons {
 						}
 						else
 						{
-							inputModel.setB((inputModel.getB() + button.getText()));
-							textField.setText(inputModel.getB());
+							inputModel.setB((inputModel.getB() + button.getText()));	
 						}
-					}
+					}	
 					
 
 				}
@@ -108,36 +108,5 @@ public class Buttons {
 			return true;
 		}
 		return false;
-	}
-
-	private void compute(InputModel inputModel, JTextField textField) {
-		
-		String numberAString = inputModel.getA();
-		String operator = inputModel.getOperator();
-		String numberBString = inputModel.getB();
-		
-		long numberA = Long.parseLong(numberAString);
-		long numberB = Long.parseLong(numberBString);
-		
-		if (operator.equals("+")){
-			Addition add = new Addition();
-			inputModel.setResult(add.computeResult(numberA, numberB).toString());
-			textField.setText(inputModel.getResult());
-		}
-		if (operator.equals("-")){
-			Subtraction subtract = new Subtraction();
-			inputModel.setResult(subtract.computeResult(numberA, numberB).toString());
-			textField.setText(inputModel.getResult());
-		}
-		if (operator.equals("x")){
-			Multiplication multiply = new Multiplication();
-			inputModel.setResult(multiply.computeResult(numberA, numberB).toString());
-			textField.setText(inputModel.getResult());
-		}
-		if (operator.equals("/")){
-			Division divide = new Division();
-			inputModel.setResult(divide.computeResult(numberA, numberB).toString());
-			textField.setText(inputModel.getResult());
-		}
 	}
 }
