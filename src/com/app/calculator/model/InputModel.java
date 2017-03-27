@@ -3,7 +3,7 @@ package com.app.calculator.model;
 public class InputModel {
 	
 	private String numberA = "";
-	private String bnumberB = "";
+	private String numberB = "";
 	private String result = "";
 	private String operator = "";
 	private boolean isFirstNumber = true;
@@ -23,10 +23,10 @@ public class InputModel {
 		this.numberA = a;
 	}
 	public String getB() {
-		return bnumberB;
+		return numberB;
 	}
 	public void setB(String b) {
-		this.bnumberB = b;
+		this.numberB = b;
 	}
 	public String getResult() {
 		return result;

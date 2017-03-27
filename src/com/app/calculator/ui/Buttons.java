@@ -3,6 +3,7 @@ package com.app.calculator.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +14,9 @@ import com.app.calculator.model.InputModel;
 
 public class Buttons {
 	
-	private ArrayList<JButton> arrayList = new ArrayList<JButton>();
+	private List<JButton> arrayList = new ArrayList<JButton>();
 	
-	public ArrayList<JButton> buildNumberButtons(JFrame frame, 
+	public List<JButton> buildNumberButtons(JFrame frame, 
 			JTextField textField, InputModel inputModel) {
 		
 		createAndAddButton("1", 10, 50, textField, inputModel);
@@ -32,7 +33,7 @@ public class Buttons {
 		return arrayList;
 	}
 	
-	public ArrayList<JButton> buildOperatorButtons(JFrame frame, 
+	public List<JButton> buildOperatorButtons(JFrame frame, 
 			JTextField textField, InputModel inputModel) {
 		
 		createAndAddButton("+", 190, 50, textField, inputModel);
@@ -43,7 +44,7 @@ public class Buttons {
 		return arrayList;
 	}
 	
-	public ArrayList<JButton> buildAdditionalButtons(JFrame frame, 
+	public List<JButton> buildAdditionalButtons(JFrame frame, 
 			JTextField textField, InputModel inputModel) {
 		
 		createAndAddButton("C", 70, 230, textField, inputModel);
@@ -56,7 +57,7 @@ public class Buttons {
 	public JButton createAndAddButton(String label, int xPos, int yPos, 
 			JTextField textField, InputModel inputModel){
 		
-		CalculatorController calculateController = new CalculatorController();
+		CalculatorController calculatorController = new CalculatorController();
 		
 		int width = 50;
 		JButton button = new JButton(label);
@@ -66,31 +67,62 @@ public class Buttons {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					boolean operated = isOperated(button, inputModel);
-					if (inputModel.isFirstNumber())
+					
+					//If Cancel button is clicked, clear all variables
+					if(button.getText().equalsIgnoreCase("C"))
+					{
+						textField.setText(null);
+						inputModel.setA("");
+						inputModel.setB("");
+						inputModel.setResult("");
+						inputModel.setIsFirstNumber(true);
+						inputModel.setIsSecondNumber(false);
+						inputModel.setIsOperated(false);
+					}
+					
+					//If first number is clicked, save to "setA" variable and
+					//display in textfield
+					else if (inputModel.isFirstNumber())
 					{
 						inputModel.setA(inputModel.getA() + button.getText());
 						textField.setText(inputModel.getA());
 					}
-					else
-					{
+					
+					//If operator button is clicked the second number will be set
+					else if (inputModel.isSecondNumber()) {
+						//If operated button returns true
 						if(operated){
+							//If "=" button is clicked it will display result
 							if (button.getText().equalsIgnoreCase("="))
 							{
-								
-								calculateController.displayResult(inputModel, textField);
+								calculatorController.displayResult(inputModel, textField);
 							}
 							else{
-								inputModel.setOperator((button.getText()));
-								textField.setText(inputModel.getOperator());
+								
+								if(button.getText().equalsIgnoreCase("+") || 
+								button.getText().equalsIgnoreCase("-")||
+								button.getText().equalsIgnoreCase("x") || 
+								button.getText().equalsIgnoreCase("/"))
+								{
+									inputModel.setOperator((button.getText()));
+									textField.setText(inputModel.getOperator());
+									
+									if (!inputModel.getResult().isEmpty()) {
+										
+										inputModel.setA(inputModel.getResult());
+										inputModel.setResult("");
+										inputModel.setOperator(inputModel.getOperator());
+									}
+								}
 							}
 						}
 						else
 						{
-							inputModel.setB((inputModel.getB() + button.getText()));	
+							inputModel.setB((inputModel.getB() + button.getText()));
+							textField.setText(inputModel.getB());	
 						}
-					}	
-					
-
+					}
+					operated = false;
 				}
 			});
 		return button;
