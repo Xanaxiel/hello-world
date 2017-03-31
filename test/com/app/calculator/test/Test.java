@@ -1,6 +1,6 @@
 package com.app.calculator.test;
 
-import com.app.calculator.ui.Calculator;
+import com.app.calculator.view.Calculator;
 
 public class Test {
 

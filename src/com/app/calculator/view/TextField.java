@@ -1,4 +1,4 @@
-package com.app.calculator.ui;
+package com.app.calculator.view;
 
 import javax.swing.JTextField;
 

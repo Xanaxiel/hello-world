@@ -1,4 +1,4 @@
-package com.app.calculator.ui;
+package com.app.calculator.view;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.app.calculator.model.InputModel;
+import com.app.calculator.model.InputVO;
 
 public class Calculator {
 	
 	public Calculator() {
 		
 		//MODEL
-		InputModel inputModel = new InputModel();
+		InputVO inputModel = new InputVO();
 		
 		//VIEW
 		JFrame frame = Frame.buildFrame();

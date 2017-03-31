@@ -2,6 +2,11 @@ package com.app.calculator.intf.impl;
 
 import com.app.calculator.intf.ArithmeticOperation;
 
+/**
+ * 
+ * @author Miguel Alvarez
+ *
+ */
 public class Subtraction implements ArithmeticOperation<Long> {
 
 	@Override

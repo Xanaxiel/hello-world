@@ -1,6 +1,6 @@
 package com.app.calculator.model;
 
-public class InputModel {
+public class InputVO {
 	
 	private String numberA = "";
 	private String numberB = "";
