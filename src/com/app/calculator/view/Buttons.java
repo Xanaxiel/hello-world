@@ -12,102 +12,174 @@ import javax.swing.JTextField;
 import com.app.calculator.controller.CalculatorController;
 import com.app.calculator.model.InputVO;
 
+/**
+ * 
+ * @author miguelalvarez
+ *
+ */
 public class Buttons {
 	
-	private List<JButton> arrayList = new ArrayList<JButton>();
+	private List<JButton> buttonList = new ArrayList<JButton>();
 	
-	public List<JButton> buildNumberButtons(JFrame frame, 
+	/**
+	 * 
+	 * @param frame
+	 * @param textField
+	 * @param inputModel
+	 * @return
+	 */
+	public List<JButton> buildNumericButtons(JFrame frame, 
 			JTextField textField, InputVO inputModel) {
-		createAndAddButton("1", 10, 50, textField, inputModel);
-		createAndAddButton("2", 70, 50, textField, inputModel);
-		createAndAddButton("3", 130, 50, textField, inputModel);
-		createAndAddButton("4", 10, 110, textField, inputModel);
-		createAndAddButton("5", 70, 110, textField, inputModel);
-		createAndAddButton("6", 130, 110, textField, inputModel);
-		createAndAddButton("7", 10, 170, textField,inputModel);
-		createAndAddButton("8", 70, 170, textField, inputModel);
-		createAndAddButton("9", 130, 170, textField, inputModel);
-		createAndAddButton("0", 10, 230, textField, inputModel);
-		return arrayList;
+		buildAndProcessButtons("1", 10, 50, textField, inputModel);
+		buildAndProcessButtons("2", 70, 50, textField, inputModel);
+		buildAndProcessButtons("3", 130, 50, textField, inputModel);
+		buildAndProcessButtons("4", 10, 110, textField, inputModel);
+		buildAndProcessButtons("5", 70, 110, textField, inputModel);
+		buildAndProcessButtons("6", 130, 110, textField, inputModel);
+		buildAndProcessButtons("7", 10, 170, textField,inputModel);
+		buildAndProcessButtons("8", 70, 170, textField, inputModel);
+		buildAndProcessButtons("9", 130, 170, textField, inputModel);
+		buildAndProcessButtons("0", 10, 230, textField, inputModel);
+		return buttonList;
 	}
 	
+	/**
+	 * 
+	 * @param frame
+	 * @param textField
+	 * @param inputModel
+	 * @return
+	 */
 	public List<JButton> buildOperatorButtons(JFrame frame, 
 			JTextField textField, InputVO inputModel) {
-		createAndAddButton("+", 190, 50, textField, inputModel);
-		createAndAddButton("-", 190, 110, textField, inputModel);
-		createAndAddButton("x", 190, 170, textField, inputModel);
-		createAndAddButton("/", 190, 230, textField, inputModel);
-		return arrayList;
+		buildAndProcessButtons("+", 190, 50, textField, inputModel);
+		buildAndProcessButtons("-", 190, 110, textField, inputModel);
+		buildAndProcessButtons("x", 190, 170, textField, inputModel);
+		buildAndProcessButtons("/", 190, 230, textField, inputModel);
+		return buttonList;
 	}
 	
-	public List<JButton> buildAdditionalButtons(JFrame frame, 
+	/**
+	 * 
+	 * @param frame
+	 * @param textField
+	 * @param inputModel
+	 * @return
+	 */
+	public List<JButton> buildClearAndEqualButtons(JFrame frame, 
 			JTextField textField, InputVO inputModel) {
-		createAndAddButton("C", 70, 230, textField, inputModel);
-		createAndAddButton("=", 130, 230, textField, inputModel);
-		return arrayList;
+		buildAndProcessButtons("C", 70, 230, textField, inputModel);
+		buildAndProcessButtons("=", 130, 230, textField, inputModel);
+		return buttonList;
 	}
 	
-	public JButton createAndAddButton(String label, int xPos, int yPos, 
+	/**
+	 * 
+	 * @param buttonLabel
+	 * @param xPosition
+	 * @param yPosition
+	 * @param textField
+	 * @param inputVo
+	 * @return
+	 */
+	public JButton buildAndProcessButtons(String buttonLabel, int xPosition, int yPosition, 
 			JTextField textField, InputVO inputVo){
-		CalculatorController calculatorController = new CalculatorController();
+		
+		CalculatorController controller = new CalculatorController();
 		int width = 50;
-		JButton button = new JButton(label);
-		button.setBounds(xPos, yPos, width, width);
-		arrayList.add(button);
+		JButton button = new JButton(buttonLabel);
+		button.setBounds(xPosition, yPosition, width, width);
+		
+		buttonList.add(button);
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					boolean operated = isOperated(button, inputVo);
-					//If Cancel button is clicked, clear all variables
-					if(button.getText().equalsIgnoreCase("C"))
+					
+					boolean isOperated = isOperated(button, inputVo);
+					
+					if (inputVo.isFirstNumber())
 					{
-						textField.setText(null);
-						inputVo.setA("");
-						inputVo.setB("");
-						inputVo.setResult("");
-						inputVo.setIsFirstNumber(true);
-						inputVo.setIsSecondNumber(false);
-						inputVo.setIsOperated(false);
+						firstNumberAction(textField, inputVo, button);
 					}
-					//If first number is clicked, save to "setA" variable and
-					//display in textfield
-					else if (inputVo.isFirstNumber())
-					{
-						inputVo.setA(inputVo.getA() + button.getText());
-						textField.setText(inputVo.getA());
-					}
-					//If operator button is clicked the second number will be set
 					else if (inputVo.isSecondNumber()) {
-						//If operated button returns true
-						if(operated){
-							//If "=" button is clicked it will display result
-							if (button.getText().equalsIgnoreCase("="))
-							{
-								calculatorController.displayResult(inputVo, textField);
-							}
-							else{
-								if(button.getText().equalsIgnoreCase("+") || 
-								button.getText().equalsIgnoreCase("-")||
-								button.getText().equalsIgnoreCase("x") || 
-								button.getText().equalsIgnoreCase("/"))
-								{
-									inputVo.setOperator((button.getText()));
-									textField.setText(inputVo.getOperator());
-									if (!inputVo.getResult().isEmpty()) {
-										inputVo.setA(inputVo.getResult());
-										inputVo.setResult("");
-										inputVo.setOperator(inputVo.getOperator());
-									}
-								}
-							}
+						secondButtonAction(textField, inputVo, controller, button, isOperated);
+					}
+					else if(button.getText().equalsIgnoreCase("C"))
+					{
+						cancelButtonAction(textField, inputVo);
+					}
+					isOperated = false;
+				}
+
+				/**
+				 * 
+				 * @param textField
+				 * @param inputVo
+				 * @param button
+				 */
+				private void firstNumberAction(JTextField textField, InputVO inputVo, JButton button) {
+					inputVo.setFirstNum(inputVo.getFirstNum() + button.getText());
+					textField.setText(inputVo.getFirstNum());
+				}
+
+				/**
+				 * 
+				 * @param textField
+				 * @param inputVo
+				 * @param controller
+				 * @param button
+				 * @param operated
+				 */
+				private void secondButtonAction(JTextField textField, InputVO inputVo,
+						CalculatorController controller, JButton button, boolean operated) {
+					if(operated)
+					{
+						//EQUALS
+						if (button.getText().equalsIgnoreCase("="))
+						{
+							controller.displayResult(inputVo, textField);
 						}
 						else
 						{
-							inputVo.setB((inputVo.getB() + button.getText()));
-							textField.setText(inputVo.getB());	
+							//OPERATORS
+							if(	button.getText().equalsIgnoreCase("+") || 
+								button.getText().equalsIgnoreCase("-") ||
+								button.getText().equalsIgnoreCase("x") || 
+								button.getText().equalsIgnoreCase("/"))
+							{
+								inputVo.setOperator((button.getText()));
+								textField.setText(inputVo.getOperator());
+								
+								if (!inputVo.getResult().isEmpty() && !inputVo.equals(null)) 
+								{
+									inputVo.setFirstNum(inputVo.getResult());
+									inputVo.setResult("");
+									inputVo.setOperator(inputVo.getOperator());
+								}
+							}
 						}
 					}
-					operated = false;
+					else
+					{
+						//NUMERALS
+						inputVo.setSecondNum((inputVo.getSecondNum() + button.getText()));
+						textField.setText(inputVo.getSecondNum());	
+					}
+				}
+
+				/**
+				 * 
+				 * @param textField
+				 * @param inputVo
+				 */
+				private void cancelButtonAction(JTextField textField, InputVO inputVo) {
+					textField.setText(null);
+					inputVo.setFirstNum("");
+					inputVo.setSecondNum("");
+					inputVo.setResult("");
+					inputVo.setIsFirstNumber(true);
+					inputVo.setIsSecondNumber(false);
+					inputVo.setIsOperated(false);
 				}
 			});
 		return button;

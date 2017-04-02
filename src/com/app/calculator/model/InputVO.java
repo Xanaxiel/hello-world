@@ -7,8 +7,8 @@ public class InputVO {
 	private String result = "";
 	private String operator = "";
 	private boolean isFirstNumber = true;
-	private boolean isSecondNumber = false;
-	private boolean isOperated = false;
+	private boolean isSecondNumber;
+	private boolean isOperated;
 	
 	public boolean isOperated() {
 		return isOperated;
@@ -16,16 +16,16 @@ public class InputVO {
 	public void setIsOperated(boolean isOperated) {
 		this.isOperated = isOperated;
 	}
-	public String getA() {
+	public String getFirstNum() {
 		return numberA;
 	}
-	public void setA(String a) {
+	public void setFirstNum(String a) {
 		this.numberA = a;
 	}
-	public String getB() {
+	public String getSecondNum() {
 		return numberB;
 	}
-	public void setB(String b) {
+	public void setSecondNum(String b) {
 		this.numberB = b;
 	}
 	public String getResult() {

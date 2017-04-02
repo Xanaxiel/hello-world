@@ -19,9 +19,9 @@ public class Calculator {
 		JFrame frame = Frame.buildFrame();
 		JTextField textField = TextField.buildTextField();
 		Buttons button = new Buttons();
-		List<JButton> listOfNumberButtons = button.buildNumberButtons(frame, textField, inputModel);
+		List<JButton> listOfNumberButtons = button.buildNumericButtons(frame, textField, inputModel);
 		List<JButton> listOfOperatorButtons = button.buildOperatorButtons(frame, textField, inputModel);
-		List<JButton> listOfAnotherButtons = button.buildAdditionalButtons(frame, textField, inputModel);
+		List<JButton> listOfAnotherButtons = button.buildClearAndEqualButtons(frame, textField, inputModel);
 		Frame.addToFrame(frame, textField, listOfNumberButtons, listOfOperatorButtons, listOfAnotherButtons);
 	}
 }

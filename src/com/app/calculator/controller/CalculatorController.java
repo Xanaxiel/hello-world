@@ -18,12 +18,14 @@ public class CalculatorController{
 	}
 
 	public void displayResult(InputVO inputModel, JTextField textField){
-		long firstInput = Long.parseLong(inputModel.getA());
-		long secondInput = Long.parseLong(inputModel.getB());
+		long firstInput = Long.parseLong(inputModel.getFirstNum());
+		long secondInput = Long.parseLong(inputModel.getSecondNum());
+		
 		if (("+").equals(inputModel.getOperator())) this.setOperation(new Addition());
 		if (("-").equals(inputModel.getOperator())) this.setOperation(new Subtraction());
 		if (("x").equals(inputModel.getOperator())) this.setOperation(new Multiplication());
 		if (("/").equals(inputModel.getOperator())) this.setOperation(new Division());
+		
 		inputModel.setResult(operation.computeResult(firstInput, secondInput).toString());
 		textField.setText(inputModel.getResult());
 	}
