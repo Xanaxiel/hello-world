@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import com.app.calculator.buttonActions.CancelButtonAction;
+import com.app.calculator.buttonActions.FirstNumberAction;
+import com.app.calculator.buttonActions.SecondNumberAction;
 import com.app.calculator.controller.CalculatorController;
 import com.app.calculator.model.InputVO;
 
@@ -86,6 +89,7 @@ public class Buttons {
 			JTextField textField, InputVO inputVo){
 		
 		CalculatorController controller = new CalculatorController();
+		
 		int width = 50;
 		JButton button = new JButton(buttonLabel);
 		button.setBounds(xPosition, yPosition, width, width);
@@ -96,104 +100,43 @@ public class Buttons {
 				public void actionPerformed(ActionEvent e) {
 					
 					boolean isOperated = isOperated(button, inputVo);
+					ActionListener action = null;
 					
 					if (inputVo.isFirstNumber())
 					{
-						firstNumberAction(textField, inputVo, button);
+						action = new FirstNumberAction(textField, inputVo, button);
 					}
 					else if (inputVo.isSecondNumber()) {
-						secondButtonAction(textField, inputVo, controller, button, isOperated);
+						action = new SecondNumberAction(textField, inputVo, 
+								controller, button, isOperated);
 					}
 					else if(button.getText().equalsIgnoreCase("C"))
 					{
-						cancelButtonAction(textField, inputVo);
+						action = new CancelButtonAction(textField, inputVo);
 					}
+					
+					action.actionPerformed(e);
 					isOperated = false;
-				}
-
-				/**
-				 * 
-				 * @param textField
-				 * @param inputVo
-				 * @param button
-				 */
-				private void firstNumberAction(JTextField textField, InputVO inputVo, JButton button) {
-					inputVo.setFirstNum(inputVo.getFirstNum() + button.getText());
-					textField.setText(inputVo.getFirstNum());
-				}
-
-				/**
-				 * 
-				 * @param textField
-				 * @param inputVo
-				 * @param controller
-				 * @param button
-				 * @param operated
-				 */
-				private void secondButtonAction(JTextField textField, InputVO inputVo,
-						CalculatorController controller, JButton button, boolean operated) {
-					if(operated)
-					{
-						//EQUALS
-						if (button.getText().equalsIgnoreCase("="))
-						{
-							controller.displayResult(inputVo, textField);
-						}
-						else
-						{
-							//OPERATORS
-							if(	button.getText().equalsIgnoreCase("+") || 
-								button.getText().equalsIgnoreCase("-") ||
-								button.getText().equalsIgnoreCase("x") || 
-								button.getText().equalsIgnoreCase("/"))
-							{
-								inputVo.setOperator((button.getText()));
-								textField.setText(inputVo.getOperator());
-								
-								if (!inputVo.getResult().isEmpty() && !inputVo.equals(null)) 
-								{
-									inputVo.setFirstNum(inputVo.getResult());
-									inputVo.setResult("");
-									inputVo.setOperator(inputVo.getOperator());
-								}
-							}
-						}
-					}
-					else
-					{
-						//NUMERALS
-						inputVo.setSecondNum((inputVo.getSecondNum() + button.getText()));
-						textField.setText(inputVo.getSecondNum());	
-					}
-				}
-
-				/**
-				 * 
-				 * @param textField
-				 * @param inputVo
-				 */
-				private void cancelButtonAction(JTextField textField, InputVO inputVo) {
-					textField.setText(null);
-					inputVo.setFirstNum("");
-					inputVo.setSecondNum("");
-					inputVo.setResult("");
-					inputVo.setIsFirstNumber(true);
-					inputVo.setIsSecondNumber(false);
-					inputVo.setIsOperated(false);
 				}
 			});
 		return button;
 	}
 	
-	private boolean isOperated(JButton button, InputVO inputModel) {
+	/**
+	 * 
+	 * @param button
+	 * @param inputVo
+	 * @return
+	 */
+	private boolean isOperated(JButton button, InputVO inputVo) {
 		if (button.getText().equalsIgnoreCase("+") || 
 			button.getText().equalsIgnoreCase("-") ||
 			button.getText().equalsIgnoreCase("x") || 
 			button.getText().equalsIgnoreCase("/") ||
 			button.getText().equalsIgnoreCase("="))
 		{
-			inputModel.setIsSecondNumber(true);
-			inputModel.setIsFirstNumber(false);
+			inputVo.setIsSecondNumber(true);
+			inputVo.setIsFirstNumber(false);
 			return true;
 		}
 		return false;
