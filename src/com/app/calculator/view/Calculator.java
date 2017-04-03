@@ -8,6 +8,11 @@ import javax.swing.JTextField;
 
 import com.app.calculator.model.InputVO;
 
+/**
+ * 
+ * @author Miguel Alvarez
+ *
+ */
 public class Calculator {
 	
 	public Calculator() {
