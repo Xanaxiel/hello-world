@@ -1,9 +1,8 @@
-package com.app.calculator.buttonActions;
+package com.app.calculator.view.buttonActions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import com.app.calculator.model.InputVO;
@@ -13,32 +12,34 @@ import com.app.calculator.model.InputVO;
  * @author miguelalvarez
  *
  */
-public class FirstNumberAction implements ActionListener{
-	
+public class CancelButtonAction implements ActionListener{
+
 	private JTextField textField;
 	private InputVO inputVo;
-	private JButton button;
 
 	/**
 	 * 
 	 * @param textField
 	 * @param inputVo
-	 * @param button
 	 */
-	public FirstNumberAction(JTextField textField, InputVO inputVo, JButton button) {
+	public CancelButtonAction(JTextField textField, InputVO inputVo) {
 		super();
 		this.textField = textField;
 		this.inputVo = inputVo;
-		this.button = button;
 	}
-
+	
 	/**
 	 * 
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		inputVo.setFirstNum(inputVo.getFirstNum() + button.getText());
-		textField.setText(inputVo.getFirstNum());
+		textField.setText(null);
+		inputVo.setFirstNum("");
+		inputVo.setSecondNum("");
+		inputVo.setResult("");
+		inputVo.setIsFirstNumber(true);
+		inputVo.setIsSecondNumber(false);
+		inputVo.setIsOperated(false);
 	}
 
 }

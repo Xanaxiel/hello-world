@@ -1,4 +1,4 @@
-package com.app.calculator.buttonActions;
+package com.app.calculator.view.buttonActions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
