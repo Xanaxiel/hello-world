@@ -12,8 +12,10 @@ import javax.swing.JTextField;
 import com.app.calculator.buttonActions.CancelButtonAction;
 import com.app.calculator.buttonActions.FirstNumberAction;
 import com.app.calculator.buttonActions.SecondNumberAction;
+import com.app.calculator.common.CalculatorConstants;
 import com.app.calculator.controller.CalculatorController;
 import com.app.calculator.model.InputVO;
+import com.app.calculator.util.CalculatorUtil;
 
 /**
  * 
@@ -89,21 +91,18 @@ public class Buttons {
 			JTextField textField, InputVO inputVo){
 		
 		CalculatorController controller = new CalculatorController();
-		
-		int width = 50;
 		JButton button = new JButton(buttonLabel);
-		button.setBounds(xPosition, yPosition, width, width);
+		button.setBounds(xPosition, yPosition, CalculatorConstants.WIDTH , CalculatorConstants.WIDTH);
 		
 		buttonList.add(button);
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					boolean isOperated = isOperated(button, inputVo);
 					ActionListener action = null;
+					boolean isOperated = CalculatorUtil.isOperated(button, inputVo);
 					
-					if (inputVo.isFirstNumber())
-					{
+					if (inputVo.isFirstNumber()) {
 						action = new FirstNumberAction(textField, inputVo, button);
 					}
 					else if (inputVo.isSecondNumber()) {
@@ -120,25 +119,5 @@ public class Buttons {
 				}
 			});
 		return button;
-	}
-	
-	/**
-	 * 
-	 * @param button
-	 * @param inputVo
-	 * @return
-	 */
-	private boolean isOperated(JButton button, InputVO inputVo) {
-		if (button.getText().equalsIgnoreCase("+") || 
-			button.getText().equalsIgnoreCase("-") ||
-			button.getText().equalsIgnoreCase("x") || 
-			button.getText().equalsIgnoreCase("/") ||
-			button.getText().equalsIgnoreCase("="))
-		{
-			inputVo.setIsSecondNumber(true);
-			inputVo.setIsFirstNumber(false);
-			return true;
-		}
-		return false;
 	}
 }
