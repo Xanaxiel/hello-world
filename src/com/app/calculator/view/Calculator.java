@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.app.calculator.model.InputVO;
+import com.app.calculator.model.CalculatorInputVO;
 
 /**
  * 
@@ -18,7 +18,7 @@ public class Calculator {
 	public Calculator() {
 		
 		//MODEL
-		InputVO inputModel = new InputVO();
+		CalculatorInputVO inputModel = new CalculatorInputVO();
 		
 		//VIEW
 		JFrame frame = Frame.buildFrame();

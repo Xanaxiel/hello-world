@@ -2,7 +2,7 @@ package com.app.calculator.util;
 
 import javax.swing.JButton;
 
-import com.app.calculator.model.InputVO;
+import com.app.calculator.model.CalculatorInputVO;
 
 /**
  * 
@@ -17,7 +17,7 @@ public class CalculatorUtil {
 	 * @param inputVo
 	 * @return
 	 */
-	public static boolean isOperated(JButton button, InputVO inputVo) {
+	public static boolean isOperated(JButton button, CalculatorInputVO inputVo) {
 		if (button.getText().equalsIgnoreCase("+") || 
 			button.getText().equalsIgnoreCase("-") ||
 			button.getText().equalsIgnoreCase("x") || 

@@ -7,7 +7,7 @@ import com.app.calculator.intf.impl.Addition;
 import com.app.calculator.intf.impl.Division;
 import com.app.calculator.intf.impl.Multiplication;
 import com.app.calculator.intf.impl.Subtraction;
-import com.app.calculator.model.InputVO;
+import com.app.calculator.model.CalculatorInputVO;
 
 public class CalculatorController{
 
@@ -17,7 +17,7 @@ public class CalculatorController{
 		this.operation = operation;
 	}
 
-	public void displayResult(InputVO inputModel, JTextField textField){
+	public void displayResult(CalculatorInputVO inputModel, JTextField textField){
 		long firstInput = Long.parseLong(inputModel.getFirstNum());
 		long secondInput = Long.parseLong(inputModel.getSecondNum());
 		

@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import com.app.calculator.common.CalculatorConstants;
 import com.app.calculator.controller.CalculatorController;
-import com.app.calculator.model.InputVO;
+import com.app.calculator.model.CalculatorInputVO;
 import com.app.calculator.util.CalculatorUtil;
 import com.app.calculator.view.buttonActions.CancelButtonAction;
 import com.app.calculator.view.buttonActions.FirstNumberAction;
@@ -34,7 +34,7 @@ public class Buttons {
 	 * @return
 	 */
 	public List<JButton> buildNumericButtons(JFrame frame, 
-			JTextField textField, InputVO inputModel) {
+			JTextField textField, CalculatorInputVO inputModel) {
 		buildAndProcessButtons("1", 10, 50, textField, inputModel);
 		buildAndProcessButtons("2", 70, 50, textField, inputModel);
 		buildAndProcessButtons("3", 130, 50, textField, inputModel);
@@ -56,7 +56,7 @@ public class Buttons {
 	 * @return
 	 */
 	public List<JButton> buildOperatorButtons(JFrame frame, 
-			JTextField textField, InputVO inputModel) {
+			JTextField textField, CalculatorInputVO inputModel) {
 		buildAndProcessButtons("+", 190, 50, textField, inputModel);
 		buildAndProcessButtons("-", 190, 110, textField, inputModel);
 		buildAndProcessButtons("x", 190, 170, textField, inputModel);
@@ -72,7 +72,7 @@ public class Buttons {
 	 * @return
 	 */
 	public List<JButton> buildClearAndEqualButtons(JFrame frame, 
-			JTextField textField, InputVO inputModel) {
+			JTextField textField, CalculatorInputVO inputModel) {
 		buildAndProcessButtons("C", 70, 230, textField, inputModel);
 		buildAndProcessButtons("=", 130, 230, textField, inputModel);
 		return buttonList;
@@ -88,7 +88,7 @@ public class Buttons {
 	 * @return
 	 */
 	public JButton buildAndProcessButtons(String buttonLabel, int xPosition, int yPosition, 
-			JTextField textField, InputVO inputVo){
+			JTextField textField, CalculatorInputVO inputVo){
 		
 		CalculatorController controller = new CalculatorController();
 		JButton button = new JButton(buttonLabel);
