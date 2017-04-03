@@ -37,8 +37,8 @@ public class FirstNumberAction implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		inputVo.setFirstNum(inputVo.getFirstNum() + button.getText());
-		textField.setText(inputVo.getFirstNum());
+		inputVo.setFirstNum(inputVo.getFirstNum() + Long.parseLong(button.getText()));
+		textField.setText(String.valueOf(inputVo.getFirstNum()));
 	}
 
 }

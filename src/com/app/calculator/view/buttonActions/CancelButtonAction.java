@@ -39,7 +39,6 @@ public class CancelButtonAction implements ActionListener{
 		inputVo.setResult("");
 		inputVo.setIsFirstNumber(true);
 		inputVo.setIsSecondNumber(false);
-		inputVo.setIsOperated(false);
 	}
 
 }

@@ -8,14 +8,7 @@ public class CalculatorInputVO {
 	private String operator = "";
 	private boolean isFirstNumber = true;
 	private boolean isSecondNumber;
-	private boolean isOperated;
 	
-	public boolean isOperated() {
-		return isOperated;
-	}
-	public void setIsOperated(boolean isOperated) {
-		this.isOperated = isOperated;
-	}
 	public String getFirstNum() {
 		return numberA;
 	}

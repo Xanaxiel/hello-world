@@ -64,7 +64,7 @@ public class SecondNumberAction implements ActionListener{
 					inputVo.setOperator((button.getText()));
 					textField.setText(inputVo.getOperator());
 					
-					if (!inputVo.getResult().isEmpty() && !inputVo.equals(null)) 
+					if (!inputVo.getResult().isEmpty()) 
 					{
 						inputVo.setFirstNum(inputVo.getResult());
 						inputVo.setResult("");

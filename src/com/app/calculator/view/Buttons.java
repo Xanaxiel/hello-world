@@ -102,16 +102,16 @@ public class Buttons {
 					ActionListener action = null;
 					boolean isOperated = CalculatorUtil.isOperated(button, inputVo);
 					
-					if (inputVo.isFirstNumber()) {
+					if (button.getText().equalsIgnoreCase("C"))
+					{
+						action = new CancelButtonAction(textField, inputVo);
+					}
+					else if (inputVo.isFirstNumber()) {
 						action = new FirstNumberAction(textField, inputVo, button);
 					}
 					else if (inputVo.isSecondNumber()) {
 						action = new SecondNumberAction(textField, inputVo, 
 								controller, button, isOperated);
-					}
-					else if(button.getText().equalsIgnoreCase("C"))
-					{
-						action = new CancelButtonAction(textField, inputVo);
 					}
 					
 					action.actionPerformed(e);
