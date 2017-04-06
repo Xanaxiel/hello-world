@@ -1,4 +1,4 @@
-package com.app.calculator.view.buttonActions;
+package com.app.calculator.view.button.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,7 @@ import com.app.calculator.model.CalculatorInputVO;
  * @author miguelalvarez
  *
  */
-public class CancelButtonAction implements ActionListener{
+public class CancelAction implements ActionListener{
 
 	private JTextField textField;
 	private CalculatorInputVO inputVo;
@@ -22,7 +22,7 @@ public class CancelButtonAction implements ActionListener{
 	 * @param textField
 	 * @param inputVo
 	 */
-	public CancelButtonAction(JTextField textField, CalculatorInputVO inputVo) {
+	public CancelAction(JTextField textField, CalculatorInputVO inputVo) {
 		super();
 		this.textField = textField;
 		this.inputVo = inputVo;
