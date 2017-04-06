@@ -7,9 +7,9 @@ import com.app.calculator.intf.impl.Addition;
 import com.app.calculator.intf.impl.Division;
 import com.app.calculator.intf.impl.Multiplication;
 import com.app.calculator.intf.impl.Subtraction;
-import com.app.calculator.model.CalculatorInputVO;
+import com.app.calculator.view.bean.InputVO;
 
-public class CalculatorController{
+public class ResultController{
 
 	ArithmeticOperation<Long> operation;
 
@@ -17,7 +17,7 @@ public class CalculatorController{
 		this.operation = operation;
 	}
 
-	public void displayResult(CalculatorInputVO inputModel, JTextField textField){
+	public void displayResult(InputVO inputModel, JTextField textField){
 		long firstInput = Long.parseLong(inputModel.getFirstNum());
 		long secondInput = Long.parseLong(inputModel.getSecondNum());
 		

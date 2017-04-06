@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
-import com.app.calculator.model.CalculatorInputVO;
+import com.app.calculator.view.bean.InputVO;
 
 /**
  * 
@@ -15,14 +15,14 @@ import com.app.calculator.model.CalculatorInputVO;
 public class CancelAction implements ActionListener{
 
 	private JTextField textField;
-	private CalculatorInputVO inputVo;
+	private InputVO inputVo;
 
 	/**
 	 * 
 	 * @param textField
 	 * @param inputVo
 	 */
-	public CancelAction(JTextField textField, CalculatorInputVO inputVo) {
+	public CancelAction(JTextField textField, InputVO inputVo) {
 		super();
 		this.textField = textField;
 		this.inputVo = inputVo;
