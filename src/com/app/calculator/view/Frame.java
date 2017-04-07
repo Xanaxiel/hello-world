@@ -14,18 +14,11 @@ public class Frame {
 		return frame;
 	}
 	
-	public static void addToFrame(JFrame frame, JTextField textField, List<JButton> listOfNumberButtons,
-			List<JButton> listOfOperatorButtons, List<JButton> listOfAnotherButtons ){
+	public static void addToFrame(JFrame frame, JTextField textField, List<JButton> buttons){
 		frame.add(textField);
 		frame.setLayout(null);  
 		frame.setVisible(true);
-		for (JButton jButton : listOfNumberButtons) {
-			frame.add(jButton);
-		}
-		for (JButton jButton : listOfOperatorButtons) {
-			frame.add(jButton);
-		}
-		for (JButton jButton : listOfAnotherButtons) {
+		for (JButton jButton : buttons) {
 			frame.add(jButton);
 		}
 	}

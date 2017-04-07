@@ -35,15 +35,15 @@ public class Buttons {
 	 */
 	public List<JButton> buildNumericButtons(JFrame frame, JTextField textField, InputVO inputModel) {
 		buildAndProcessButtons("1", 10, 50, textField, inputModel);
-		buildAndProcessButtons("4", 10, 110, textField, inputModel);
-		buildAndProcessButtons("7", 10, 170, textField, inputModel);
-		buildAndProcessButtons("0", 10, 230, textField, inputModel);
 		buildAndProcessButtons("2", 70, 50, textField, inputModel);
-		buildAndProcessButtons("5", 70, 110, textField, inputModel);
-		buildAndProcessButtons("8", 70, 170, textField, inputModel);
 		buildAndProcessButtons("3", 130, 50, textField, inputModel);
+		buildAndProcessButtons("4", 10, 110, textField, inputModel);
+		buildAndProcessButtons("5", 70, 110, textField, inputModel);
 		buildAndProcessButtons("6", 130, 110, textField, inputModel);
+		buildAndProcessButtons("7", 10, 170, textField, inputModel);
+		buildAndProcessButtons("8", 70, 170, textField, inputModel);
 		buildAndProcessButtons("9", 130, 170, textField, inputModel);
+		buildAndProcessButtons("0", 10, 230, textField, inputModel);
 		return buttonList;
 	}
 
