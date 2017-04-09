@@ -1,4 +1,4 @@
-package com.app.calculator.intf;
+package com.app.calculator.service;
 
 /**
  * <pre>

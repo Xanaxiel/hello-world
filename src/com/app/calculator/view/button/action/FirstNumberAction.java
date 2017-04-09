@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import com.app.calculator.view.bean.InputVO;
+import com.app.calculator.view.bean.CalculatorVO;
 
 /**
  * 
@@ -16,7 +16,7 @@ import com.app.calculator.view.bean.InputVO;
 public class FirstNumberAction implements ActionListener{
 	
 	private JTextField textField;
-	private InputVO inputVo;
+	private CalculatorVO inputVo;
 	private JButton button;
 
 	/**
@@ -25,7 +25,7 @@ public class FirstNumberAction implements ActionListener{
 	 * @param inputVo
 	 * @param button
 	 */
-	public FirstNumberAction(JTextField textField, InputVO inputVo, JButton button) {
+	public FirstNumberAction(JTextField textField, CalculatorVO inputVo, JButton button) {
 		super();
 		this.textField = textField;
 		this.inputVo = inputVo;

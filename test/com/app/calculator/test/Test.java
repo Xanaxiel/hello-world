@@ -1,19 +1,22 @@
 package com.app.calculator.test;
 
-import static com.app.calculator.view.Frame.buildFrame;
-import static com.app.calculator.view.TextField.buildTextField;
-
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 import com.app.calculator.Calculator;
-import com.app.calculator.view.bean.InputVO;
+import com.app.calculator.util.ButtonBuilder;
 
 public class Test {
 
 	public static void main(String[] args) {
-		Calculator app = new Calculator(new InputVO(), buildFrame(), new ArrayList<JButton>(), buildTextField());
+		JTextField textField = new JTextField();
+		List<JButton> buttons = new ButtonBuilder().buildButtons();
+		JFrame frame = new JFrame();
+		
+		Calculator app = new Calculator(frame, buttons, textField);
 		app.renderCalculator();
 	}
 }

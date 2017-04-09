@@ -1,6 +1,6 @@
 package com.app.calculator.view.bean;
 
-public class InputVO {
+public class CalculatorVO {
 	
 	private String numberA = "";
 	private String numberB = "";

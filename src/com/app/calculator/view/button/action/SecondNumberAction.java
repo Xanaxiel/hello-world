@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import com.app.calculator.controller.ResultController;
-import com.app.calculator.view.bean.InputVO;
+import com.app.calculator.controller.ActionController;
+import com.app.calculator.view.bean.CalculatorVO;
 
 /**
  * 
@@ -17,8 +17,8 @@ import com.app.calculator.view.bean.InputVO;
 public class SecondNumberAction implements ActionListener{
 
 	private JTextField textField;
-	private InputVO inputVo;
-	private ResultController controller;
+	private CalculatorVO inputVo;
+	private ActionController controller;
 	private JButton button;
 	private boolean isOperated;
 	
@@ -30,7 +30,7 @@ public class SecondNumberAction implements ActionListener{
 	 * @param button
 	 * @param isOperated
 	 */
-	public SecondNumberAction(JTextField textField, InputVO inputVo, ResultController controller, JButton button,
+	public SecondNumberAction(JTextField textField, CalculatorVO inputVo, ActionController controller, JButton button,
 			boolean isOperated) {
 		super();
 		this.textField = textField;

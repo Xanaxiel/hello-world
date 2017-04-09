@@ -1,6 +1,4 @@
-package com.app.calculator.intf.impl;
-
-import com.app.calculator.intf.ArithmeticOperation;
+package com.app.calculator.service;
 
 /**
  * 
